@@ -1,4 +1,4 @@
-job "monitoring" {
+job "grafana" {
   datacenters = ["dc1"]
   
   type = "service"

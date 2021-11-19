@@ -25,12 +25,13 @@ job "prometheus" {
           type   = "bind"
           source = "local"
           target = "/etc/prometheus"
+          readonly = true
         }
         ports = ["http"]
       }
       artifact {
-        source      = "github.com/gastrogee/nomad-demo/prometheus/prometheus.yml"
-        destination = "local/prometheus.yml"
+        source      = "github.com/gastrogee/nomad-demo/prometheus"
+        destination = "local/"
       }
       resources {
         cpu    = 100 # 500 MHz

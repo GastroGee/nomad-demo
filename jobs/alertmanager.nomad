@@ -16,7 +16,7 @@ job "alertmanager" {
         static = "9093"
       }
     }
-    task "prometheus" {
+    task "alertmanager" {
       driver = "docker"
 
       config {
@@ -25,12 +25,13 @@ job "alertmanager" {
           type   = "bind"
           source = "local"
           target = "/etc/alertmanager"
+          readonly = true
         }
         ports = ["http"]
       }
       artifact {
-        source      = "github.com/gastrogee/nomad-demo/alertmanager/alertmanager.yml"
-        destination = "local/alertmanager.yml"
+        source      = "github.com/gastrogee/nomad-demo/alertmanager"
+        destination = "local/"
       }
       resources {
         cpu    = 200 # 500 MHz
